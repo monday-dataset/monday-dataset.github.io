@@ -1,10 +1,536 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="refresh" content="0; url=https://yedasong.com/" />
-    <title>Redirecting...</title>
-  </head>
-  <body>
-    <p>Redirecting...<a href="https://yedasong.com/">link</a>.</p>
-  </body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MONDAY: Scalable Video-to-Dataset Generation for Cross-Platform Mobile Agents</title>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="icon" href="images/monday_logo.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            padding-top: 80px;
+        }
+
+        .custom-navbar {
+            background-color: #acedf7;
+        }
+
+        .title {
+            font-family: 'Google Sans', sans-serif;
+            font-weight: bold;
+            padding-bottom: 10px;
+        }
+
+        .section-title {
+            font-family: 'Google Sans', sans-serif;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            scroll-margin-top: 60px;
+        }
+
+        .author-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .author {
+            text-align: center;
+            display: inline-block;
+          }
+
+        .author img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-name {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        .affiliation {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .links {
+            margin-top: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .btn-paper {
+            margin: 5px;
+            padding: 8px 16px;
+            font-weight: bold;
+        }
+
+        .teaser-row {
+            margin-bottom: 30px;
+        }
+
+        .teaser-img {
+            width: 45%;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .img-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* space between gifs */
+            margin-bottom: 10px;
+        }
+
+        .dataset-example {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .dataset-example img {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+
+        .pipeline-img {
+            width: 100%;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .results-img {
+            width: 80%;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .caption {
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            margin-top: 50px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #666;
+        }
+
+        .stats-box {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .stats-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .stats-label {
+            font-size: 1em;
+            color: #666;
+        }
+
+        .table-wrapper {
+          display: flex;
+          justify-content: center; /* Horizontal centering */
+          align-items: center;     /* Vertical centering */
+        }
+
+        table.results-table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .results-table th {
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+
+        .results-table td {
+            text-align: center;
+        }
+
+        .highlight {
+            background-color: #fffacd;
+            padding: 2px;
+        }
+
+        pre {
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            color: #333;
+        }
+
+        p code, li code {
+            background-color: #f5f5f5;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light custom-navbar fixed-top"> -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="images/monday_logo.png" width="25"/> MONDAY</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#overview">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pipeline">Pipeline</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#dataset">Dataset</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experiments">Experiments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#download">Download</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="title">
+                <img src="images/monday_logo.png" width="50"/>
+                MONDAY: Scalable Video-to-Dataset Generation for Cross-Platform Mobile Agents
+                </h1>
+            </div>
+        </div>
+
+       <div class="row">
+            <div class="col-md-12">
+              <div class="author-row">
+                <span class="author">
+                  <a href="https://yunseokjang.github.io/">
+                    <span class="fancy_text_color">Yunseok Jang</span>
+                  </a><sup>*1</sup>,
+                </span>&nbsp;
+
+                <span class="author">
+                  <a href="https://yedasong.com/">
+                    <span class="fancy_text_color">Yeda Song</span>
+                  </a><sup>*1</sup>,
+                </span>&nbsp;
+
+                <span class="author">
+                  <a href="https://sites.google.com/view/sungryull">
+                    <span class="fancy_text_color">Sungryull Sohn</span>
+                  </a><sup>2</sup>,
+                </span>&nbsp;
+
+                <span class="author">
+                  <a href="https://lajanugen.github.io/">
+                    <span class="fancy_text_color">Lajanugen Logeswaran</span>
+                  </a><sup>2</sup>,
+                </span>&nbsp;
+
+                <span class="author">
+                  <a href="https://tiangeluo.github.io/">
+                    <span class="fancy_text_color">Tiange Luo</span>
+                  </a><sup>1</sup>,
+                </span>&nbsp;
+
+                <span class="author">
+                  <a href="https://dkkim93.github.io/">
+                    <span class="fancy_text_color">Dong-Ki Kim</span>
+                  </a><sup>2</sup>,
+                </span>&nbsp;
+
+                <span class="author">
+                  <a href="https://sites.google.com/view/kyunghoonbae/home">
+                    <span class="fancy_text_color">Kyunghoon Bae</span>
+                  </a><sup>2</sup>,
+                </span>&nbsp;
+
+                <span class="author">
+                  <a href="https://web.eecs.umich.edu/~honglak/">
+                    <span class="fancy_text_color">Honglak Lee</span>
+                  </a><sup>1,2</sup>
+                </span>
+              </div>
+
+              <div class="author-row">
+                <span class="author"><sup>1</sup>University of Michigan,</span>&nbsp;
+                <span class="author"><sup>2</sup>LG AI Research</span>&nbsp;
+                <span class="author"><sup>*</sup>Equal contribution</span>
+              </div>
+
+              <div class="author-row">
+                <span class="author"><b style="color:#f41c1c">To appear in CVPR 2025</b></span>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="links">
+                              <!-- PDF Link. -->
+                              <span class="link-block">
+                                  <a href="#" class="btn btn-outline-dark"
+                                      role="button">&#128221;
+                                      Paper (coming soon)</a> &nbsp;&nbsp;
+
+                              </span>
+                              <!-- Code Link. -->
+                              <span class="link-block">
+                                  <a href="https://github.com/runamu/monday" class="btn btn-outline-dark"
+                                      role="button">&#128187;
+                                      Code (coming soon)</a> &nbsp;&nbsp;
+
+                              </span>
+                              <!-- Dataset Link. -->
+                              <span class="link-block">
+
+                                  <a href="https://huggingface.co/datasets/runamu/MONDAY"
+                                      class="btn btn-outline-dark" role="button">&#128194;
+                                      Data (coming soon)</a>
+                      </div>
+                  </div>
+              </div>
+
+            </div>
+        </div>
+
+        <div class="row teaser-row">
+          <div class="col-md-12 text-center">
+              <div class="img-wrapper">
+                  <img src="images/example3_figure_g.gif" alt="Teaser" class="teaser-img">
+                  <img src="images/example6_figure_h.gif" alt="Teaser" class="teaser-img">
+              </div>
+              <p class="caption">
+                  MONDAY provides a diverse Android/iOS navigation trajectories for training pixel-based GUI agents, extracted from instructional videos. It comprises 20,320 sequences and 312,754 frames, and the GIFs above showcase the automatic annotations.
+              </p>
+          </div>
+      </div>
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="stats-box">
+                    <div class="stats-number">313K</div>
+                    <div class="stats-label">Annotated Frames</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-box">
+                    <div class="stats-number">2.5K</div>
+                    <div class="stats-label">Apps</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-box">
+                    <div class="stats-number">Android & iOS</div>
+                    <div class="stats-label">Multi-Platform</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title" id="overview">Overview</h2>
+                <p>
+                  MONDAY (Mobile OS Navigation Task Dataset for Agents from YouTube) is a large-scale, comprehensive dataset designed to advance research in pixel-based GUI agents. Our dataset addresses key challenges in the field including multi-platform data, zero-access to the environment, and real-world task coverage. We collect data from pulbicly available videos using a robust, automated pipeline that ensures high quality across various mobile OS platforms (Android and iOS), OS versions, and user configurations.
+                </p>
+                <p>
+                    The key contributions of our dataset include:
+                </p>
+                <ul>
+                    <li><strong>Scale:</strong> 20,320 sequences with 312,754 annotated frames.</li>
+                    <li><strong>Diversity:</strong> Data from both Android and iOS across 2,479 apps, including system apps and varied GUI configurations.</li>
+                    <li><strong>Realism:</strong> Reflects real-world usage through automatic task curation from web-crawled data.</li>
+                    <li><strong>Annotations:</strong> Includes rich metadata, as well as scene, UI element, and action labels.</li>
+                    <li><strong>Benchmarks:</strong> Provides popular AitW-style evaluation protocols and baseline results.</li>
+              </ul>
+
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+              <h2 class="section-title" id="pipeline">MONDAY Pipeline</h2>
+              <p>
+                Our data collection pipeline consists of several carefully designed stages to extract high-quality mobile OS navigation data from real-world videos. The process includes video collection, scene segmentation, UI element detection, and action annotation.
+              </p>
+              <img src="images/main-ver8.png" alt="Pipeline" class="pipeline-img">
+              <p class="caption">
+                  Core components of the MONDAY data collection framework.
+              </p>
+              <p>
+                  The pipeline follows these key steps:
+              </p>
+              <ol>
+                  <li><strong>Video Collection:</strong> We gather real-world instructional videos from YouTube based on user-written task queries mined from web posts (e.g., C4, Dolma datasets). Videos are filtered to include only mobile phone content (iOS/Android), with clean views and narration.</li>
+                  <li><strong>Scene Transition Detection:</strong> We isolate phone screens and detect transitions using OCR-based text change analysis, ensuring robust segmentation of task steps across varying UI layouts.</li>
+                  <li><strong>UI Element Detection:</strong> Detected screens undergo UI element extraction using GroundingDINO and Paddle OCR, followed by heuristic filtering to identify actionable elements.</li>
+                  <li><strong>Three-step Action Identification:</strong> Actions are annotated using a novel three-step method: (1) summarizing scenes, (2) initial action prediction using Set-of-Marks (SoM), and (3) refined action localization with zoomed-in views.</li>
+              </ol>
+          </div>
+      </div>
+
+        <div class="row">
+            <div class="col-md-12">
+              <h2 class="section-title" id="dataset">Dataset Statistics</h2>
+                <p>
+                  MONDAY is split into 19,725 training videos, 495 validation videos, and 100 test videos.
+                  The training set includes 9,755 iOS and 9,970 Android videos.
+                  The validation set contains an equal distribution of 246 iOS and 249 Android videos, while the test set maintains the same balanced 50/50 split between platforms.
+                </p>
+                <p>
+                  Video duration and action type distribution is described below:
+                </p>
+            </div>
+            <div class="author-row">
+              <div class="col-md-5">
+                    <img src="images/duration_distribution.png" alt="Video Duration" class="pipeline-img">
+              </div>
+              <div class="col-md-5">
+                <img src="images/action_pie_chart.png" alt="Action Types" class="pipeline-img">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <p class="caption">
+                      (Left) Distribution of video duration in minutes. Red vertical dotted line stands for the average duration of 2.66 minutes. The majority of videos (77.8%) fall between 1-5.5 minutes, with a peak at 1.05 minutes. <br>
+                      (Right) Action type distribution in our dataset shows touch actions dominate at 79.83%, followed by scroll (8.53%) and other actions.
+                  </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title" id="experiments">Experiments and Results</h2>
+                We evaluate both our pipeline and models trained on MONDAY through comprehensive experiments.
+                To evaluate our data collection method, we manually annotated 100 videos.
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-md-12">
+              <h3>Pipeline Evaluation</h3>
+          </div>
+          <div class="col-md-4">
+                <img src="images/scene_transition_detection.png" alt="Scene Transition Detection" class="pipeline-img">
+            </div>
+          <div class="col-md-4">
+                <img src="images/ui_element_detection.png" alt="UI Element Detection" class="pipeline-img">
+            </div>
+          <div class="col-md-4">
+                <img src="images/action_identification.png" alt="Action Identification" class="pipeline-img">
+            </div>
+          <div class="col-md-12">
+            <p class="caption">
+                  (Left) Our OCR-based approach significantly outperforms baselines by leveraging text content changes rather than traditional visual features.
+                  <br>
+                  (Middle) Our UI element detection is robust, accurately identifying home screen icons and bottom-positioned UI elements that OmniParser frequently misses.
+                  <br>
+                  (Right) Our multi-image 3-step approach outperforms simplified variants.
+              </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+              <h3>Model Evaluation</h3>
+          </div>
+          <div class="author-row">
+            <div class="col-md-10">
+                  <img src="images/model_evaluation.png" alt="Model Evaluation" class="pipeline-img">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <p class="caption">
+            Step accuracies of the original pre-trained models (SeeClick, Llama-3.2) vs. the corresponding MONDAY-induced variants (SeeClick-MONDAY, Llama3.2-MONDAY). Models finetuned from MONDAY-induced variants consistently outperform the baselines and generalize well to an unseen mobile platform (Windows Mobile).
+            </p>
+        </div>
+      </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title" id="download">Download and Usage</h2>
+                <p>
+                    TBU
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+              <h2 class="section-title" id="download">Citation</h2>
+              <p>
+                <pre>
+                  <code>
+@inproceedings{jang2025_monday,
+  title={{Scalable Video-to-Dataset Generation for Cross-Platform Mobile Agents}},
+  author={Jang, Yunseok and Song, Yeda and Sohn, Sungryull and Logeswaran, Lajanugen and Luo, Tiange and Kim, Dong-Ki and Bae, Kyunghoon and Lee, Honglak},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2025}
+}
+                  </code>
+                </pre>
+
+              </p>
+          </div>
+      </div>
+
+
+
+        <div align="center" class="container">
+          <div class="columns is-centered">
+            <span class="author" style="font-size: 120%; margin-bottom: 10px;"><i>The website is under construction. Stay tuned for more updates soon!</i></span>
+          </div>
+          <div class="columns is-centered">
+            <img src="images/monday_logo.png", width="200"/>
+          </div>
+        </div>
+
+        <footer>
+          <div align="center" class="container">
+            <div class="columns is-centered">
+                <div class="content is-small">
+                    This website template is partly based on <a href="https://xwang.dev/mint-bench/">MINT</a>.
+                  <p>&copy; 2025 The MONDAY Authors</p>
+                </div>
+            </div>
+        </div>
+
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
