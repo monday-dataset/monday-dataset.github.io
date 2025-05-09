@@ -346,17 +346,17 @@
                             <a href="https://arxiv.org/abs/xxxx.xxxxx" class="btn btn-outline-dark btn-paper btn-big" role="button">
                               <img src="https://cdn.simpleicons.org/arxiv" alt="ArXiv" width="20" height="20">
                               <!-- &#128221;  -->
-                              &nbsp; Paper &nbsp;
+                              &nbsp; Paper (Coming Soon) &nbsp;
                             </a>&nbsp;&nbsp;
 
                             <a href="https://github.com/runamu/monday" class="btn btn-outline-dark btn-code btn-big" role="button">
                               <img src="https://cdn.simpleicons.org/github" alt="GitHub" width="20" height="20">
-                              &nbsp; Code &nbsp;
+                              &nbsp; Code (Coming Soon) &nbsp;
                             </a>&nbsp;&nbsp;
 
                             <a href="https://huggingface.co/datasets/runamu/MONDAY" class="btn btn-outline-dark btn-data btn-big" role="button">
                               <img src="https://cdn.simpleicons.org/huggingface" alt="GitHub" width="20" height="20">
-                              &nbsp; Data &nbsp;
+                              &nbsp; Data (Coming Soon) &nbsp;
                             </a>
                           </span>
                       </div>
@@ -425,7 +425,7 @@
                 </ul>
 
                 <p>
-                  In addition to traditional, environment-based training methods, MONDAY introduces a new paradigm: <strong>zero-access data collection</strong>.
+                  In addition to traditional, environment-based training methods, MONDAY introduces a new paradigm in GUI agents: <strong>zero-access data collection</strong>.
                   Despite inherent noise in video-sourced data, our models demonstrate strong generalization on public and out-of-distribution datasets—highlighting the effectiveness and value of this approach.
                 </p>
 
@@ -526,9 +526,9 @@
         <br>
 
         <div class="row">
-          <div class="col-md-12">
-              <h3>Pipeline Evaluation</h3>
-          </div>
+            <div class="col-md-12 text-center">
+              <h3>Dataset Collection Method Evaluation</h3>
+            </div>
           <div class="col-md-4">
                 <img src="images/scene_transition_detection.png" alt="Scene Transition Detection" class="pipeline-img">
             </div>
@@ -550,7 +550,7 @@
         </div>
 
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12 text-center">
               <h3>Mobile Navigation Agent Evaluation</h3>
           </div>
 
@@ -571,7 +571,8 @@
             <div class="col-md-12">
                 <h2 class="section-title" id="download">Download and Usage</h2>
                 <p>
-<pre><code class="language-python">dataset_dict = load_dataset("runamu/MONDAY")
+<pre><code class="language-python">from datasets import load_dataset
+dataset_dict = load_dataset("runamu/MONDAY")
 </code></pre>
                 </p>
             </div>
